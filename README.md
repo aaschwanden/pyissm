@@ -5,9 +5,6 @@ Focusing on Pine Island Glacier (based on this [tutorial](https://issm.jpl.nasa.
 
 ## Quickstart
 
-Launch in [Pangeo Binder](https://pangeo-binder.readthedocs.io) (Interactive jupyter lab environment in the cloud).
-
-[![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/weiji14/pyissm/master)
 
 ## Installation
 
@@ -27,13 +24,13 @@ Activate the conda environment first.
 Then clone the ISSM svn trunk repository.
 You will need to have [subversion](https://subversion.apache.org/) installed.
 
-    echo 'anon' | svn checkout --username anon --password-from-stdin -r 25855 https://issm.ess.uci.edu/svn/issm/issm/trunk
-
+    svn --username anon --password anon checkout https://issm.ess.uci.edu/svn/issm/issm/trunk
+    mv trunk issm
+    
 After that, you will need to compile some of the dependencies shipped with ISSM.
 
-    export ISSM_DIR=/path/to/pyissm/trunk
+    export ISSM_DIR=$HOME/issm
     source $ISSM_DIR/etc/environment.sh && cd $ISSM_DIR/externalpackages/m1qn3 && ./install.sh
-    source $ISSM_DIR/etc/environment.sh && cd $ISSM_DIR/externalpackages/triangle && ./install-linux.sh
 
 Setup some environment variables and configuration settings,
 and patch the configure file to remove the 'm' for minimal (Python 3.8 and above only).
@@ -59,29 +56,7 @@ and patch the configure file to remove the 'm' for minimal (Python 3.8 and above
         --with-petsc-dir="$CONDA_DIR" \
         --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
         --with-m1qn3-dir="$ISSM_DIR/externalpackages/m1qn3/install"
-    # sed -i 's/-lpython${PYTHON_VERSION}m/-lpython${PYTHON_VERSION}/g' $ISSM_DIR/configure
 
-
-For completeness, here's the equivalent commands for compiling under MATLAB.
-The 'with-matlab-dir' filepath needs to be set to where MATLAB is installed.
-
-    cd $ISSM_DIR && \
-        ./configure \
-        --prefix="$ISSM_DIR" \
-        --disable-static \
-        --enable-debugging \
-        --enable-development \
-        --with-numthreads=8 \
-        --with-matlab-dir="/opt/Matlab/R2019a/" \
-        --with-fortran-lib="-L$CONDA_DIR/lib/gcc/x86_64-conda-linux-gnu/7.5.0/ -lgfortran" \
-        --with-mpi-include="$CONDA_DIR/lib/include" \
-        --with-mpi-libflags="-L$CONDA_DIR/lib -lmpi -lmpicxx -lmpifort" \
-        --with-metis-dir="$CONDA_DIR/lib" \
-        --with-scalapack-dir="$CONDA_DIR/lib" \
-        --with-mumps-dir="$CONDA_DIR/lib" \
-        --with-petsc-dir="$CONDA_DIR" \
-        --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
-        --with-m1qn3-dir="$ISSM_DIR/externalpackages/m1qn3/install"
 
 Finally compile ISSM!
 

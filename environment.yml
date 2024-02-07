@@ -2,24 +2,12 @@ name: pyissm
 channels:
   - conda-forge
 dependencies:
-  - automake
-  - blas
-  - cmake
-  - fortran-compiler
-  - conda-forge/label/dev::gmt=6.2.0.dev5+c94e83f[md5=eb9584e5dd6b839860cf9fd6f2a72012]
-  - jupyterlab
-  - lapack
-  - libtool
-  - matplotlib
-  - mpich-mpicxx
-  - netcdf4
-  - nose
-  - numpy
-  - pandas
-  - petsc=3.12
   - pip
-  - pygmt=0.2.1
-  - python=3.7
-  - scipy
   - triangle
+  - petsc
+  - triangle
+  - cmake
+  - python-devtools
+  - gcc
   - xarray
+  - notebook
