@@ -31,6 +31,7 @@ After that, you will need to compile some of the dependencies shipped with ISSM.
 
     export ISSM_DIR=$HOME/issm
     source $ISSM_DIR/etc/environment.sh && cd $ISSM_DIR/externalpackages/m1qn3 && ./install.sh
+    source $ISSM_DIR/etc/environment.sh && cd $ISSM_DIR/externalpackages/triangle && ./install-linux.sh
 
 Setup some environment variables and configuration settings.
 
@@ -49,11 +50,11 @@ Setup some environment variables and configuration settings.
         --with-fortran-lib="-L$CONDA_DIR/lib/gcc/x86_64-conda-linux-gnu/13.2.0/ -lgfortran" \
         --with-mpi-include="$CONDA_DIR/lib/include" \
         --with-mpi-libflags="-L$CONDA_DIR/lib -lmpi -lmpicxx -lmpifort" \
-        --with-metis-dir="$CONDA_DIR/lib" \
-        --with-scalapack-dir="$CONDA_DIR/lib" \
-        --with-mumps-dir="$CONDA_DIR/lib" \
+        --with-metis-dir="$CONDA_DIR/" \
+        --with-scalapack-dir="$CONDA_DIR" \
+        --with-mumps-dir="$CONDA_DIR" \
         --with-petsc-dir="$CONDA_DIR" \
-        --with-triangle-dir="$CONDA_DIR" \
+        --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
         --with-m1qn3-dir="$ISSM_DIR/externalpackages/m1qn3/install"
 
 
