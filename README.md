@@ -44,17 +44,17 @@ and patch the configure file to remove the 'm' for minimal (Python 3.8 and above
         --enable-debugging \
         --enable-development \
         --with-numthreads=8 \
-        --with-python-version=3.7 \
+        --with-python-version=3.12 \
         --with-python-dir="$CONDA_DIR" \
-        --with-python-numpy-dir="$CONDA_DIR/lib/python3.7/site-packages/numpy/core/include/numpy" \
-        --with-fortran-lib="-L$CONDA_DIR/lib/gcc/x86_64-conda-linux-gnu/7.5.0/ -lgfortran" \
+        --with-python-numpy-dir="$CONDA_DIR/lib/python3.12/site-packages/numpy/core/include/numpy" \
+        --with-fortran-lib="-L$CONDA_DIR/lib/gcc/x86_64-conda-linux-gnu/13.2.0/ -lgfortran" \
         --with-mpi-include="$CONDA_DIR/lib/include" \
         --with-mpi-libflags="-L$CONDA_DIR/lib -lmpi -lmpicxx -lmpifort" \
         --with-metis-dir="$CONDA_DIR/lib" \
         --with-scalapack-dir="$CONDA_DIR/lib" \
         --with-mumps-dir="$CONDA_DIR/lib" \
         --with-petsc-dir="$CONDA_DIR" \
-        --with-triangle-dir="$ISSM_DIR/externalpackages/triangle/install" \
+        --with-triangle-dir="$CONDA_DIR" \
         --with-m1qn3-dir="$ISSM_DIR/externalpackages/m1qn3/install"
 
 
